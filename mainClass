@@ -1,0 +1,94 @@
+
+
+import java.util.Scanner;
+
+public class main {
+	// variable created to hold length of array, random number and another integer
+	// (checkLoop) to help us to end the while loop
+	public static int arraylength;
+	public static int randomNumber;
+	public static int checkLoop = 0;
+	// array created to hold user guesses
+	public static String[] guessWord = new String[20];
+
+	public static void main(String[] args) {
+		// dictionary object created
+		Dictionary d1 = new Dictionary();
+		// random number created up to 20
+		randomNumber = (int) (Math.random() * 20);
+		// random word selected and length of the array assign to the variable
+		arraylength = d1.dictionarylist[randomNumber].length();
+		// underscore and hidden word printed
+		underScore(arraylength);
+		// scanner object created
+		Scanner input = new Scanner(System.in);
+		// while loop created to ask user to enter a character until they solved
+		while (checkLoop < arraylength) {
+			// ask user to enter a character
+			System.out.println(" enter a character ");
+			// user input assign to the variable
+			String c1 = input.next();
+			// array created to split the random word
+			String[] parts = d1.dictionarylist[randomNumber].split("");
+			// for loop created to check user input that is whether exist in the word
+			for (int i = 0; i < arraylength; i++) {
+
+				if (guessWord[i] == null) {
+					// if the character found in the word hold the index number
+					if (c1.equals(parts[i])) {
+						guessWord[i] = c1;
+
+					}
+
+				}
+
+			}
+			// display the word with underscore and user right guesses
+			for (int i = 0; i < arraylength; i++) {
+				// if the character has not been found print underscore
+				if (guessWord[i] == null) {
+					System.out.print(" _ ");
+				}
+				// if the character has been found display the character
+				else
+					System.out.print(guessWord[i]);
+
+				// for loop created to check whether word is guessed by the user
+				for (int j = 0; j < arraylength; j++) {
+					if (guessWord[j] != null) {
+						// if all the character has been found increase the variable
+						if (guessWord[j].equals(parts[j])) {
+							checkLoop += 1;
+
+						}
+
+					}
+					// if all character has not been found make the variable default value
+					else
+						checkLoop = 0;
+
+				}
+
+			}
+
+		}
+		System.out.println();
+
+		System.out.println("yay you guessed it");
+
+	}
+
+	// this method is used to display under score
+	public static void underScore(int number1) {
+		Dictionary d1 = new Dictionary();
+
+		for (int i = 0; i < number1; i++) {
+			System.out.print(" _ ");
+
+		}
+
+		System.out.println(" (***" + d1.dictionarylist[randomNumber] + "***)");
+
+	}
+
+}
