@@ -1,0 +1,15 @@
+
+
+public class Dictionary {
+	// array created with values
+	String dictionarylist[] = { "barbecue", "blend", "bread", "brown", "butterfly", "cream", "dough",
+
+			"flavor", "fillet", "freeze", "measure", "microwave", "overcook", "precook", "prepare",
+
+			"refrigerate", "render", "roast", "shell", "smoke" };
+
+	Dictionary() {
+
+	}
+
+}
